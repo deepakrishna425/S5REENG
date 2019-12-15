@@ -140,7 +140,7 @@ public class S5 {
 		for(Workshop workshop : workshopList) {
 			for(Period period : workshop.getPeriods()) {
 				if(period.getCurrEnroll()!=0 && period.getCurrEnroll()<period.getMinEnroll()) {
-					System.out.println(workshop.getOpr() + "    " + period.getMinEnroll() +  "     " + period.getCurrEnroll());
+					System.out.println(workshop.getOpr() + "  \t\t\t  " + period.getMinEnroll() +  "   \t\t\t  " + period.getCurrEnroll());
 					needto = true;
 					for(Student student : period.getScheduledStudents()) {
 						for(int i =0; i<workshop.getLengthOfWorkshop();i++) {
@@ -280,29 +280,29 @@ public class S5 {
 			s5.schedule(s5.studentList, s5.workshopList);
 			
 			for(Workshop workshop : s5.workshopList) {
-				System.out.println("");
+				System.out.println("\nWorkshop Name" + "\t"+ "Period" +"\t"+ "Max Enroll" +"\t"+ "Min Enroll" +"\t"+ "Curr Enroll");
 				for(Period period : workshop.getPeriods()) {
-					System.out.println(workshop.getOpr() + "\t"+period.getId() +"\t"+ period.getMaxEnroll() +"\t"+ period.getMinEnroll() +"\t"+ period.getCurrEnroll());
+					System.out.println(workshop.getOpr() + "\t\t"+period.getId() +"\t\t"+ period.getMaxEnroll() +"\t\t"+ period.getMinEnroll() +"\t\t"+ period.getCurrEnroll());
 				}
 			}
 			
-			System.out.println("******************************************************************");
-			
+			System.out.println("*********************** Check for Reschedule Students *******************************************");
+			System.out.println("\nWorkshop Name" + "\t"+ "\t"+ "Min Enroll" +"\t"+ "Curr Enroll");
 			while(s5.needtoRescheduleStudents()) {
 				s5.reschedule();
 			}
 			
 			for(Workshop workshop : s5.workshopList) {
-				System.out.println("");
+				System.out.println("\nWorkshop Name" + "\t"+ "Period" +"\t"+ "Max Enroll" +"\t"+ "Min Enroll" +"\t"+ "Curr Enroll");
 				for(Period period : workshop.getPeriods()) {
-					System.out.println(workshop.getOpr() + "\t"+period.getId() +"\t"+ period.getMaxEnroll() +"\t"+ period.getMinEnroll() +"\t"+ period.getCurrEnroll());
+					System.out.println(workshop.getOpr() + "\t\t"+period.getId() +"\t\t"+ period.getMaxEnroll() +"\t\t"+ period.getMinEnroll() +"\t\t"+ period.getCurrEnroll());
 				}
 			}
 			
 			for(Student student : s5.studentList) {
-				System.out.println("");
+				System.out.println("\nStudent Name" + "\t"+ "Period" + " \t" + "Workshop Name");
 				for(Entry<Integer,String> entrySet : student.getScheduledWorkshops().entrySet()) {
-					System.out.println(student.getName()+"    "+ entrySet.getKey() +  "    " + entrySet.getValue());
+					System.out.println(student.getName()+"  \t  "+ entrySet.getKey() +  "  \t  " + entrySet.getValue());
 				}
 			}
 			
